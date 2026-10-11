@@ -30,9 +30,26 @@ def build_chord_seq(sections, n_bars):
     return seq
 
 
+# ============================================================
+# 休止符固定规范（固化为固定代码，禁止手写绕过）
+# ------------------------------------------------------------
+# 1. 整小节静默：一律输出全音符休止符 r1（4/4 拍恰好占满一小节），
+#    严禁输出 8 个八分休止符 r8 堆叠 —— 谱面臃肿且不符合记谱惯例。
+# 2. 小节内单拍空隙：用八分休止符 r8 占位（保持 8 分网格粒度）。
+# 3. 适用范围：melody_bar 整小节无音符时即整小节静默；
+#    未来新增任何声部（左手/内声部）若出现整小节静默，
+#    必须复用 rest_bar()，禁止手写 r8 堆叠。
+# ============================================================
+def rest_bar():
+    """整小节静默 → 全音符休止 r1（4/4 拍占满一小节）。"""
+    return "r1 |"
+
+
 def melody_bar(bars, bar_idx, fix_threshold):
     b = bars[bar_idx]
     slots = {s["s"]: s for s in b["slots"]}
+    if not slots:
+        return rest_bar()
     out = []
     for s8 in range(8):
         if s8 in slots:
@@ -49,6 +66,18 @@ def lh_bar(chord, chord_map):
     low, upper = chord_map[chord]["low"], chord_map[chord]["upper"]
     pat = f"{low}8( {upper}16 {upper}16) "
     return pat * 4 + "|"
+
+
+# 左手伴奏整体比右手弱一档（钢琴编配惯例：旋律突出、伴奏衬底）
+LH_DYN_OFFSET = {
+    "\\ppp": "\\ppp",
+    "\\pp": "\\ppp",
+    "\\p": "\\pp",
+    "\\mp": "\\p",
+    "\\mf": "\\mp",
+    "\\f": "\\mf",
+    "\\ff": "\\f",
+}
 
 
 def main():
@@ -127,7 +156,7 @@ def main():
     for sec in chords_cfg["sections"]:
         lines.append(f"  % {sec['name']} (bars {sec['start']}-{sec['end']})")
         for b in range(int(sec["start"]) - 1, int(sec["end"])):
-            dyn = sec["dyn"] if b == int(sec["start"]) - 1 else ""
+            dyn = LH_DYN_OFFSET.get(sec["dyn"], sec["dyn"]) if b == int(sec["start"]) - 1 else ""
             lines.append("  " + (dyn + " " if dyn else "") + lh_bar(chord_seq[b], chord_map))
         lines.append("  \\break")
     lines.append('  \\bar "|."')
