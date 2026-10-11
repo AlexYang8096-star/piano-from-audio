@@ -39,5 +39,12 @@
       { "name": "BRIDGE",      "start": 81, "end": 92,  "dyn": "\\mp", "chords": ["Em", "G", "C", "D"] },
       { "name": "FINAL CHORUS","start": 93, "end": 104, "dyn": "\\ff", "chords": ["G", "C", "D", "G"] }
     ]
+  },
+  "tune": {
+    "lh_vel": 0,
+    "rh_vel": 0,
+    "lh_density": 0,
+    "rh_density": 0,
+    "tempo": 0
   }
 }

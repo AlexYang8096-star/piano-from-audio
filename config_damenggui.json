@@ -265,5 +265,12 @@
         ]
       }
     ]
+  },
+  "tune": {
+    "lh_vel": 0,
+    "rh_vel": 0,
+    "lh_density": 0,
+    "rh_density": 0,
+    "tempo": 0
   }
 }
