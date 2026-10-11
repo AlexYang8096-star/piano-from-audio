@@ -14,6 +14,10 @@
 ### 01 分离
 
 - 模型选择：`melband_roformer_instvox_duality_v2`（UVR 社区）。无钢琴专属模型时，**用 Instrumental 整轨作低音来源**——实测 demucs 旧 piano 轨低音能量仅为 Instrumental 轨的 1/250，不能用作低音。
+- **模型获取与复用**：ckpt 约 1.7GB。首次运行 audio-separator 会自动下载到 `/tmp/audio-separator-models/`；GitHub release 下载速度约 400KB/s（1 小时+），且**极易截断损坏**（加载报 `PytorchStreamReader failed reading zip archive` 即为损坏）。规避方案：
+  1. 本地已有完整 ckpt 时，设 `AUDIO_SEPARATOR_MODEL_DIR=<目录>` 环境变量直接加载，禁止重复下载；
+  2. 下载完成后用 `python -c "import zipfile; zipfile.ZipFile('<ckpt路径>')"` 校验（报 `BadZipFile` 即损坏，需重下）；
+  3. 慢网速备选：demucs `htdemucs`（约 52MB，`~/.cache/torch/hub/checkpoints/`）作分离模型，低音质量略逊但可用。
 - 必须校验：分离轨与原曲时长一致（ffprobe），防截断。
 
 ### 02 转录

@@ -73,6 +73,7 @@ piano-from-audio/
 
 ## 关键经验（详见 docs/workflow.md）
 
+- 分离模型：`melband_roformer_instvox_duality_v2.ckpt`（约 1.7GB）。首次运行 `01_separate.py` 会自动下载到 `/tmp/audio-separator-models/`；下载极慢（约 400KB/s，需 1 小时+）且易截断损坏。**若本地已有一份 ckpt，设置环境变量 `AUDIO_SEPARATOR_MODEL_DIR=<模型所在目录>` 即可直接复用，无需重新下载**；下载完成后建议用 `python -c "import zipfile; zipfile.ZipFile('模型路径')"` 校验完整性
 - 分离：无钢琴专属模型时用 Instrumental 整轨作低音来源（旧 piano 轨低音能量可能低 250 倍）
 - 速度：BPM 以含人声整曲的 beat_track 为准（伴奏轨易被 8 分节奏误报）
 - 八度漂移：basic-pitch 会把旋律段落放到低八度，统一 `pitch < 阈值 → +12` 修正
