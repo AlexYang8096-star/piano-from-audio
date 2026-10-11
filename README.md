@@ -66,7 +66,7 @@ python3 selfcheck/selfcheck_workflow.py config.json
 piano-from-audio/
 ├── config.example.json    # 示例配置（复制为 config.json 使用）
 ├── workflow/              # 阶段脚本 01→07
-├── selfcheck/             # 管线自检（20 项）
+├── selfcheck/             # 管线自检（26 项）
 ├── docs/workflow.md       # 方法论与踩坑记录
 └── examples/              # 示例输出说明
 ```
