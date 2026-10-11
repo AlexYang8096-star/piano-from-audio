@@ -35,7 +35,8 @@ def build_chord_seq(sections, n_bars):
 # ------------------------------------------------------------
 # 1. 整小节静默：一律输出全音符休止符 r1（4/4 拍恰好占满一小节），
 #    严禁输出 8 个八分休止符 r8 堆叠 —— 谱面臃肿且不符合记谱惯例。
-# 2. 小节内单拍空隙：用八分休止符 r8 占位（保持 8 分网格粒度）。
+# 2. 小节内连续休止：按「全 > 二分 > 四分 > 八分」贪心合并，
+#    如 7 个 r8 → r2 + r4 + r8；仅孤立单拍空隙保留 r8。
 # 3. 适用范围：melody_bar 整小节无音符时即整小节静默；
 #    未来新增任何声部（左手/内声部）若出现整小节静默，
 #    必须复用 rest_bar()，禁止手写 r8 堆叠。
@@ -45,21 +46,49 @@ def rest_bar():
     return "r1 |"
 
 
+def _emit_rests(run):
+    """把 run 个八分休止贪心拆成规范时值序列（不跨小节）。"""
+    parts = []
+    for val, dur in ((8, "r1"), (4, "r2"), (2, "r4"), (1, "r8")):
+        while run >= val:
+            parts.append(dur)
+            run -= val
+    return parts
+
+
+def merge_rests(tokens):
+    """合并连续 r8 休止符为更长时值（r1/r2/r4），保持音符顺序不变。"""
+    out = []
+    run = 0
+    for t in tokens:
+        if t == "r8":
+            run += 1
+            continue
+        if run:
+            out.extend(_emit_rests(run))
+            run = 0
+        out.append(t)
+    if run:
+        out.extend(_emit_rests(run))
+    return out
+
+
 def melody_bar(bars, bar_idx, fix_threshold):
     b = bars[bar_idx]
     slots = {s["s"]: s for s in b["slots"]}
     if not slots:
         return rest_bar()
-    out = []
+    tokens = []
     for s8 in range(8):
         if s8 in slots:
             p = slots[s8]["p"]
             if p < fix_threshold:
                 p += 12
-            out.append(pitch_name(p) + "8")
+            tokens.append(pitch_name(p) + "8")
         else:
-            out.append("r8")
-    return " ".join(out) + " |"
+            tokens.append("r8")
+    tokens = merge_rests(tokens)
+    return " ".join(tokens) + " |"
 
 
 def lh_bar(chord, chord_map):
