@@ -1,0 +1,12 @@
+# 生成物与版权材料一律不入库
+output/
+work/
+*.wav
+*.mp3
+*.mid
+*.midi
+*.pdf
+__pycache__/
+*.pyc
+.DS_Store
+config.json

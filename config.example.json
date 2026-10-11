@@ -1,0 +1,43 @@
+{
+  "song": {
+    "title": "Song Title",
+    "subtitle": "Artist (feat. Guest) — Piano Solo",
+    "key": "g",
+    "time_signature": "4/4",
+    "bpm": 103.0,
+    "n_bars": 104,
+    "input_audio": "/absolute/path/to/song.mp3",
+    "output_dir": "output",
+    "work_dir": "work"
+  },
+  "separation": {
+    "model": "melband_roformer_instvox_duality_v2",
+    "output_dir": "work/separated"
+  },
+  "melody": {
+    "midi_path": "work/vocals_transcribed.mid",
+    "pitch_min": 55,
+    "pitch_max": 88,
+    "min_note_len": 0.09,
+    "octave_fix_threshold": 64
+  },
+  "chords": {
+    "chord_map": {
+      "Em": { "chordsym": "e1:m", "low": "e", "upper": "<g b>" },
+      "D":  { "chordsym": "d1",   "low": "d", "upper": "<fis a>" },
+      "C":  { "chordsym": "c1",   "low": "c", "upper": "<e g>" },
+      "G":  { "chordsym": "g1",   "low": "g", "upper": "<b d'>" }
+    },
+    "sections": [
+      { "name": "INTRO",       "start": 1,  "end": 8,   "dyn": "\\mp", "chords": ["Em", "D", "C", "G"] },
+      { "name": "VERSE 1",     "start": 9,  "end": 24,  "dyn": "\\mf", "chords": ["Em", "D", "C", "G"] },
+      { "name": "PRE-CHORUS",  "start": 25, "end": 32,  "dyn": "\\mf", "chords": ["Em", "D", "C", "G"] },
+      { "name": "CHORUS 1",    "start": 33, "end": 44,  "dyn": "\\f",  "chords": ["G", "C", "D", "G", "C", "D", "D", "Em", "D", "C", "C", "G"] },
+      { "name": "VERSE 2",     "start": 45, "end": 60,  "dyn": "\\mp", "chords": ["G", "C", "D", "G"] },
+      { "name": "PRE-CHORUS 2","start": 61, "end": 68,  "dyn": "\\mf", "chords": ["G", "C", "D", "G"] },
+      { "name": "CHORUS 2",    "start": 69, "end": 80,  "dyn": "\\f",  "chords": ["G", "C", "D", "G", "C", "D", "D", "Em", "D", "C", "C", "G"] },
+      { "name": "BRIDGE",      "start": 81, "end": 92,  "dyn": "\\mp", "chords": ["Em", "G", "C", "D"] },
+      { "name": "FINAL CHORUS","start": 93, "end": 104, "dyn": "\\ff", "chords": ["G", "C", "D", "G"] }
+    ]
+  }
+}
