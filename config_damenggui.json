@@ -1,0 +1,269 @@
+{
+  "song": {
+    "title": "大梦归",
+    "subtitle": "周深 — Piano Solo",
+    "key": "es",
+    "time_signature": "4/4",
+    "bpm": 136.0,
+    "n_bars": 124,
+    "input_audio": "/Users/alexyang/Library/Application Support/com.tencent.mac.marvis/MarvisData/User/oAN1i2acvp_C_-p5qbMYOaVMYmS4/workspace/conv_0990ab553f6b40dbb6e80a859920951e/temp/damenggui_audio.wav",
+    "output_dir": "/Users/alexyang/Library/Application Support/com.tencent.mac.marvis/MarvisData/User/oAN1i2acvp_C_-p5qbMYOaVMYmS4/workspace/conv_0990ab553f6b40dbb6e80a859920951e/output",
+    "work_dir": "/Users/alexyang/Library/Application Support/com.tencent.mac.marvis/MarvisData/User/oAN1i2acvp_C_-p5qbMYOaVMYmS4/workspace/conv_0990ab553f6b40dbb6e80a859920951e/temp"
+  },
+  "separation": {
+    "model": "melband_roformer_instvox_duality_v2.ckpt",
+    "output_dir": "/Users/alexyang/Library/Application Support/com.tencent.mac.marvis/MarvisData/User/oAN1i2acvp_C_-p5qbMYOaVMYmS4/workspace/conv_0990ab553f6b40dbb6e80a859920951e/temp/separated"
+  },
+  "melody": {
+    "midi_path": "/Users/alexyang/Library/Application Support/com.tencent.mac.marvis/MarvisData/User/oAN1i2acvp_C_-p5qbMYOaVMYmS4/workspace/conv_0990ab553f6b40dbb6e80a859920951e/temp/vocals_transcribed.mid",
+    "pitch_min": 55,
+    "pitch_max": 88,
+    "min_note_len": 0.09,
+    "octave_fix_threshold": 64
+  },
+  "chords": {
+    "chord_map": {
+      "Cm": {
+        "chordsym": "c1:m",
+        "low": "c",
+        "upper": "<ees g>"
+      },
+      "GmBb": {
+        "chordsym": "g1:m/bes",
+        "low": "bes",
+        "upper": "<g bes d'>"
+      },
+      "AbM7": {
+        "chordsym": "aes1:maj7",
+        "low": "aes",
+        "upper": "<c ees g>"
+      },
+      "EbM7": {
+        "chordsym": "ees1:maj7",
+        "low": "ees",
+        "upper": "<g bes d'>"
+      },
+      "Fm": {
+        "chordsym": "f1:m",
+        "low": "f",
+        "upper": "<aes c'>"
+      },
+      "CmEb": {
+        "chordsym": "c1:m/ees",
+        "low": "ees",
+        "upper": "<c' ees' g'>"
+      },
+      "Dm7": {
+        "chordsym": "d1:m7",
+        "low": "d",
+        "upper": "<f a c'>"
+      },
+      "G7": {
+        "chordsym": "g1:7",
+        "low": "g",
+        "upper": "<b f'>"
+      },
+      "GB": {
+        "chordsym": "g1/b",
+        "low": "b",
+        "upper": "<g b d'>"
+      },
+      "Gm7": {
+        "chordsym": "g1:m7",
+        "low": "g",
+        "upper": "<bes d' f'>"
+      },
+      "Fm7": {
+        "chordsym": "f1:m7",
+        "low": "f",
+        "upper": "<aes c' ees'>"
+      },
+      "C#7": {
+        "chordsym": "cis1:7",
+        "low": "cis",
+        "upper": "<eis gis b>"
+      },
+      "G#7": {
+        "chordsym": "gis1:7",
+        "low": "gis",
+        "upper": "<bis dis' fis'>"
+      },
+      "C#m": {
+        "chordsym": "cis1:m",
+        "low": "cis",
+        "upper": "<e gis>"
+      },
+      "G#mB": {
+        "chordsym": "gis1:m/b",
+        "low": "b",
+        "upper": "<gis b dis'>"
+      },
+      "AM7": {
+        "chordsym": "a1:maj7",
+        "low": "a",
+        "upper": "<cis' e' gis'>"
+      },
+      "EM7": {
+        "chordsym": "e1:maj7",
+        "low": "e",
+        "upper": "<gis b dis'>"
+      },
+      "F#m": {
+        "chordsym": "fis1:m",
+        "low": "fis",
+        "upper": "<a cis'>"
+      },
+      "C#mE": {
+        "chordsym": "cis1:m/e",
+        "low": "e",
+        "upper": "<cis' e' gis'>"
+      },
+      "D#m7": {
+        "chordsym": "dis1:m7",
+        "low": "dis",
+        "upper": "<fis a cis'>"
+      },
+      "F#A#": {
+        "chordsym": "fis1:m/ais",
+        "low": "ais",
+        "upper": "<fis ais cis'>"
+      },
+      "C#9sus": {
+        "chordsym": "cis1:sus4",
+        "low": "cis",
+        "upper": "<fis gis b dis'>"
+      },
+      "G7sus": {
+        "chordsym": "g1:7sus4",
+        "low": "g",
+        "upper": "<c' d' f'>"
+      }
+    },
+    "sections": [
+      {
+        "name": "INTRO",
+        "start": 1,
+        "end": 16,
+        "dyn": "\\pp",
+        "chords": [
+          "Cm",
+          "GmBb",
+          "AbM7",
+          "EbM7",
+          "Fm",
+          "Cm",
+          "G7",
+          "Cm"
+        ]
+      },
+      {
+        "name": "VERSE 1",
+        "start": 17,
+        "end": 32,
+        "dyn": "\\mp",
+        "chords": [
+          "Cm",
+          "GB",
+          "Cm",
+          "AbM7",
+          "Gm7",
+          "Fm7",
+          "G7sus",
+          "G7"
+        ]
+      },
+      {
+        "name": "VERSE 2",
+        "start": 33,
+        "end": 48,
+        "dyn": "\\mf",
+        "chords": [
+          "Cm",
+          "GB",
+          "Cm",
+          "AbM7",
+          "Gm7",
+          "Fm7",
+          "C#7",
+          "G7"
+        ]
+      },
+      {
+        "name": "CHORUS",
+        "start": 49,
+        "end": 64,
+        "dyn": "\\f",
+        "chords": [
+          "Cm",
+          "GmBb",
+          "AbM7",
+          "EbM7",
+          "Fm",
+          "CmEb",
+          "Dm7",
+          "G7"
+        ]
+      },
+      {
+        "name": "VERSE 2'",
+        "start": 65,
+        "end": 80,
+        "dyn": "\\mf",
+        "chords": [
+          "Cm",
+          "GB",
+          "Cm",
+          "AbM7",
+          "Gm7",
+          "Fm7",
+          "C#7",
+          "G7"
+        ]
+      },
+      {
+        "name": "CHORUS 2",
+        "start": 81,
+        "end": 96,
+        "dyn": "\\f",
+        "chords": [
+          "Cm",
+          "GmBb",
+          "AbM7",
+          "EbM7",
+          "Fm",
+          "CmEb",
+          "Dm7",
+          "G7"
+        ]
+      },
+      {
+        "name": "LAST CHORUS",
+        "start": 97,
+        "end": 112,
+        "dyn": "\\ff",
+        "chords": [
+          "G#7",
+          "C#m",
+          "G#mB",
+          "AM7",
+          "EM7",
+          "F#m",
+          "C#mE",
+          "G#7"
+        ]
+      },
+      {
+        "name": "OUTRO",
+        "start": 113,
+        "end": 124,
+        "dyn": "\\p",
+        "chords": [
+          "C#m",
+          "G#mB",
+          "F#A#",
+          "C#9sus"
+        ]
+      }
+    ]
+  }
+}

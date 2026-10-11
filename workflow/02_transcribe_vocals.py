@@ -30,14 +30,24 @@ def main():
     print("out :", midi_out)
 
     cmd = [
-        "basic-pitch", str(src),
-        "--midi-save-path", str(midi_out.parent),
-        "--sonify-midi",
+        "basic-pitch",
+        "--save-midi", "--sonify-midi",
+        "--model-serialization", "onnx",
+        "--onset-threshold", "0.5",
+        "--frame-threshold", "0.3",
+        "--minimum-note-length", "127.7",
+        str(midi_out.parent), str(src),
     ]
     print("cmd:", " ".join(cmd))
     r = subprocess.run(cmd)
     if r.returncode != 0:
         raise SystemExit("basic-pitch 转录失败")
+
+    # 新版 basic-pitch 以 <音频名>_basic_pitch.mid 写入 output_dir，移动为约定文件名
+    produced = sorted(midi_out.parent.glob("*_basic_pitch.mid"))
+    if not produced:
+        raise SystemExit("未找到 basic-pitch 生成的 MIDI 文件")
+    produced[0].replace(midi_out)
     print("done:", midi_out)
 
 
